@@ -1,0 +1,8 @@
+.vs/
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.*
+iac/
+bin/
+obj/

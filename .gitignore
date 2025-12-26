@@ -1,1 +1,11 @@
 .vs/
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.*
+iac/.terraform/
+iac/.terraform.lock.hcl
+iac/terraform.tfstate
+iac/terraform.tfstate.*
+bin/
+obj/

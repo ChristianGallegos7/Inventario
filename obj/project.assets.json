@@ -3108,23 +3108,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Dell\\.nuget\\packages\\": {},
+    "C:\\Users\\cgallegos\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dell\\Documents\\Proyectos\\Inventario\\Inventario.csproj",
+      "projectUniqueName": "C:\\Users\\cgallegos\\Documents\\Christian\\Proyectos\\Inventario\\Inventario.csproj",
       "projectName": "Inventario",
-      "projectPath": "C:\\Users\\Dell\\Documents\\Proyectos\\Inventario\\Inventario.csproj",
-      "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dell\\Documents\\Proyectos\\Inventario\\obj\\",
+      "projectPath": "C:\\Users\\cgallegos\\Documents\\Christian\\Proyectos\\Inventario\\Inventario.csproj",
+      "packagesPath": "C:\\Users\\cgallegos\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\cgallegos\\Documents\\Christian\\Proyectos\\Inventario\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\cgallegos\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3133,6 +3133,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

@@ -5,6 +5,7 @@ on:
       - master
 jobs:
   build-and-deploy:
+
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -38,3 +39,11 @@ jobs:
            -t $ACR_REGISTRY/netapp:latest \
           .
           docker push $ACR_REGISTRY/netapp --all-tags
+
+  deploy-app-to-aca:
+    runs-on: ubuntu-latest
+    needs: build-and-deploy
+    steps:
+      - name: Login to azure
+        uses: azure/login@v1
+        

@@ -4,10 +4,22 @@ variable "env_id" {
   default     = "dev"
 }
 
+variable "sql_pass" {
+  type = string
+  description = "Sql server pass"
+
+}
+
 variable "location" {
   type        = string
   description = "Resource location"
   default     = "East US"
+}
+
+variable "location2" {
+  type = string
+  description = "Resource location"
+  default = "East US 2"
 }
 
 variable "src_key" {

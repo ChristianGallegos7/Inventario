@@ -17,11 +17,18 @@ resource "azurerm_container_app" "cg-inventario-eus-aca" {
 
   ingress {
     allow_insecure_connections = false
-    external_enabled          = true
-    target_port = 8080
+    external_enabled           = true
+    target_port                = 80
     traffic_weight {
-      percentage = 100
+      percentage      = 100
+      label           = "primary"
+      latest_revision = true
     }
+  }
+
+  tags = {
+    environment = var.env_id
+    src         = var.src_key
   }
 
 }

@@ -6,6 +6,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    outputs:
+      short_sha: ${{ steps.vars.outputs.short_sha}}
     steps:
       - name: Checkout repository
         id: github
@@ -19,6 +21,7 @@ jobs:
       - name: Configure Azure ACR
         uses: azure/docker-login@v2
         with:
+          # Para obtener las credenciales del Azure Container Registry, me voy al recurso del portal, en settings -> Access Keys estan las 3 credenciales, esas las guardamos como variables o como secrets en la parte del repositorio de github en settings -> secrets and variables -> actions.
           login-server: ${{vars.ACR_SERVER}}
           username: ${{secrets.ACR_USERNAME}}
           password: ${{secrets.ACR_PASSWORD}}
@@ -47,3 +50,15 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{secrets.AZURE_CREDENTIALS}}
+
+      - name: Deploy to ACA
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          registryUrl: ${{vars.ACR_SERVER}}
+          imageToDeploy: ${{vars.ACR_SERVER}}/netapp:${{needs.build-and-deploy.outputs.short_sha}}
+          targetPort: 8080
+          ingress: external
+          containerAppName: cg-inventario-dev-eus-aca
+          containerAppEnvironment: cg-inventario-dev-eus-acae
+          resourceGroup: cg-inventario-dev-eus-rg
+          environmentVariables: ASPNETCORE_ENVIRONMENT=Development ASPNETCORE_URLS=http://+:8080

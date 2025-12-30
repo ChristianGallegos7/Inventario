@@ -5,7 +5,6 @@ on:
       - master
 jobs:
   build-and-deploy:
-
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -28,7 +27,7 @@ jobs:
         id: vars
         run: |
           echo "short_sha=$(git rev-parse --short ${{github.sha}})" >> "$GITHUB_OUTPUT"
-      
+
       - name: Build and push image to ACR
         env:
           ACR_REGISTRY: ${{vars.ACR_SERVER}}
@@ -46,4 +45,5 @@ jobs:
     steps:
       - name: Login to azure
         uses: azure/login@v1
-        
+        with:
+          creds: ${{secrets.AZURE_CREDENTIALS}}

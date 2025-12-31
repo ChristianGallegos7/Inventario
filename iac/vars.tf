@@ -7,7 +7,6 @@ variable "env_id" {
 variable "sql_pass" {
   type = string
   description = "Sql server pass"
-
 }
 
 variable "location" {

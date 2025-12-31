@@ -50,15 +50,18 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{secrets.AZURE_CREDENTIALS}}
-
       - name: Deploy to ACA
         uses: azure/container-apps-deploy-action@v1
+        env:
+          IMAGE_TAG: ${{needs.build-and-deploy.outputs.short_sha}}
+          ACR_SERVER: ${{vars.ACR_SERVER}}
+          PASSWORD: ${{secrets.SQL_DB_CONNECTION_STRING}}
         with:
           registryUrl: ${{vars.ACR_SERVER}}
-          imageToDeploy: ${{vars.ACR_SERVER}}/netapp:${{needs.build-and-deploy.outputs.short_sha}}
+          imageToDeploy: ${{env.ACR_SERVER}}/netapp:${{env.IMAGE_TAG}}
           targetPort: 8080
           ingress: external
           containerAppName: cg-inventario-dev-eus-aca
           containerAppEnvironment: cg-inventario-dev-eus-acae
           resourceGroup: cg-inventario-dev-eus-rg
-          environmentVariables: ASPNETCORE_ENVIRONMENT=Development ASPNETCORE_URLS=http://+:8080
+          environmentVariables: ASPNETCORE_ENVIRONMENT=Development ASPNETCORE_URLS=http://+:8080 ConnectionStrings__CadenaConexion=${{env.PASSWORD}}
